@@ -53,10 +53,17 @@ window.addEventListener("click", (e) => {
   }
 });
 
+// Fake notification
 const form = modal.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault(); // chặn gửi đi
   alert("Thank you for joining!"); 
   modal.style.display = "none";
   form.reset();
+});
+
+document.querySelector(".contact-form form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert("Thank you for contacting us!");
+  e.target.reset();
 });
