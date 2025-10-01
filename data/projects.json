@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Tesla",
+    "img": "img/aboutelon2.jpg",
+    "desc": "Electric cars and clean energy solutions."
+  },
+  {
+    "title": "SpaceX",
+    "img": "img/aboutelon3.jpg",
+    "desc": "Making life multiplanetary with rockets."
+  },
+  {
+    "title": "Neuralink",
+    "img": "img/neuralink.jpg",
+    "desc": "Brain-computer interface for the future."
+  },
+  {
+    "title": "6 7",
+    "img": "img/67.avif",
+    "desc": "6 7"
+  }
+]

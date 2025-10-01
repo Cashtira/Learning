@@ -34,13 +34,24 @@ showSlide(0)
 // Bấm nút hiện form
 const modal = document.getElementById("joinModal");
 const closeBtn = modal.querySelector(".close");
-
+/*
 const openButtons = document.querySelectorAll(".open-modal");
 
 openButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     modal.style.display = "flex";
   });
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+}); */ 
+
+const projectsContainer = document.getElementById("projects-container");
+projectsContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("open-modal")) {
+    modal.style.display = "flex";
+  }
 });
 
 closeBtn.addEventListener("click", () => {
@@ -67,3 +78,35 @@ document.querySelector(".contact-form form").addEventListener("submit", (e) => {
   alert("Thank you for contacting us!");
   e.target.reset();
 });
+
+fetch("data/projects.json")
+  .then(res => res.json())
+  .then(projects => {
+    const container = document.getElementById("projects-container");
+    projects.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "project-card";
+      card.innerHTML = `
+        <img src="${p.img}" alt="${p.title}">
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <button class="open-modal" data-project="${p.title}">Join</button>
+      `;
+      container.appendChild(card);
+    });
+  });
+
+  fetch("data/timeline.json")
+  .then(res => res.json())
+  .then(events => {
+    const container = document.getElementById("timeline-container");
+    events.forEach(e => {
+      const card = document.createElement("div");
+      card.className = "timeline-card";
+      card.innerHTML = `
+        <h3>${e.year}</h3>
+        <p>${e.event}</p>
+      `;
+      container.appendChild(card);
+    });
+  });
